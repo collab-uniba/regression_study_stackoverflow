@@ -3,7 +3,7 @@ SELECT COUNT(Questions.Id) FROM Posts AS Questions INNER JOIN Posts AS Answers O
 WHERE (Questions.OwnerUserId<>Answers.OwnerUserId) 
 AND (Questions.CreationDate BETWEEN '2016-11-14'AND '2016-12-14');
 
-// Query 2 - To count the overall number of questions in the last mont:
+// Query 2 - To count the overall number of questions in the last month:
 SELECT COUNT(Questions.Id) FROM Posts AS Questions WHERE 
 Questions.CreationDate BETWEEN '2016-11-14'AND '2016-12-14';
 
@@ -12,3 +12,8 @@ Questions.CreationDate BETWEEN '2016-11-14'AND '2016-12-14';
 SELECT Id, Tags FROM Posts WHERE Tags = '<java>' OR Tags = '<javascript>' OR Tags = '<php>' OR Tags = '<python>' OR Tags = '<c#>' 
 INTO OUTFILE '/tmp/topicsStackOF.csv' FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY '\n';
  
+// Query 4 - To get the date of the last Question posted on Stackoverflow and present in the database
+SELECT CreationDate FROM Posts WHERE PostTypeId = 1 GROUP BY CreationDate DESC LIMIT 1;
+
+// Query 5 - To get the date of the last Answer posted on Stackoverflow and present in the database
+SELECT CreationDate FROM Posts WHERE PostTypeId = 2 GROUP BY CreationDate DESC LIMIT 1;
