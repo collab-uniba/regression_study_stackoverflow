@@ -17,3 +17,7 @@ SELECT CreationDate FROM Posts WHERE PostTypeId = 1 GROUP BY CreationDate DESC L
 
 // Query 5 - To get the date of the last Answer posted on Stackoverflow and present in the database
 SELECT CreationDate FROM Posts WHERE PostTypeId = 2 GROUP BY CreationDate DESC LIMIT 1;
+
+// Query 6 - To get the questions posted in the last three days before the extraction of the dump of stackoverflow
+SELECT Id FROM Posts WHERE PostTypeId = 1 AND CreationDate BETWEEN '2014-09-12' AND '2014-09-15' INTO OUTFILE '/tmp/lastThreeDaysSTACKOF.csv'
+ FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY '\n';
