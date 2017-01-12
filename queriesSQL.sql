@@ -21,3 +21,10 @@ SELECT CreationDate FROM Posts WHERE PostTypeId = 2 GROUP BY CreationDate DESC L
 // Query 6 - To get the questions posted in the last three days before the extraction of the dump of stackoverflow
 SELECT Id FROM Posts WHERE PostTypeId = 1 AND CreationDate BETWEEN '2014-09-12' AND '2014-09-15' INTO OUTFILE '/tmp/lastThreeDaysSTACKOF.csv'
  FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+ 
+ //Query 7 - To get the reputation of the author of accepted answers in a certain date interval
+ SELECT Questions.Id, Users.Reputation FROM Posts AS Questions 
+ INNER JOIN Posts AS Answers ON Questions.AcceptedAnswerId = Answers.Id 
+ INNER JOIN Users ON Answers.OwnerUserId = Users.Id 
+ WHERE Questions.CreationDate BETWEEN '2014-08-10' AND '2014-09-15' 
+ INTO OUTFILE '/tmp/answererReputation.csv' FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY '\n';
