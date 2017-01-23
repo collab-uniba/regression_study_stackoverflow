@@ -29,8 +29,24 @@ stackoverflow_dataset <- read.csv2('/tmp/ReputationStudyRefactored.csv')
 
 
 #no Gratitude
+#With comments
+#stackoverflow_logit <- glm(formula=Successful ~ CodeSnippet + I(Weekday=='Weekend') + I(GMTHour=='Afternoon') + I(GMTHour=='Evening') + I(GMTHour=='Night') + I(BodyLength=='medium') + I(BodyLength =='long') + I(TitleLength=='medium') + I(TitleLength=='long')+ I(SentimentPositiveScore=='Mild') + I(SentimentPositiveScore=='Strong') + I(SentimentNegativeScore=='Mild') + I(SentimentNegativeScore=='Strong') + I(CommentSentimentPositiveScore=='Mild') + I(CommentSentimentPositiveScore=='Strong') + I(CommentSentimentNegativeScore=='Mild') + I(CommentSentimentNegativeScore=='Strong') + NTag + AvgUpperCharsPPost + URL +IsTheSameTopicBTitle + I(UserReputation=='Low') + I(UserReputation=='Established') + I(UserReputation=='Trusted'), data=stackoverflow_dataset, family=binomial())
 
-stackoverflow_logit <- glm(formula=Successful ~ CodeSnippet + I(Weekday=='Weekend') + I(GMTHour=='Afternoon') + I(GMTHour=='Evening') + I(GMTHour=='Night') + I(BodyLength=='medium') + I(BodyLength =='long') + I(TitleLength=='medium') + I(TitleLength=='long')+ I(SentimentPositiveScore=='Mild') + I(SentimentPositiveScore=='Strong') + I(SentimentNegativeScore=='Mild') + I(SentimentNegativeScore=='Strong') + I(CommentSentimentPositiveScore=='Mild') + I(CommentSentimentPositiveScore=='Strong') + I(CommentSentimentNegativeScore=='Mild') + I(CommentSentimentNegativeScore=='Strong') + NTag + AvgUpperCharsPPost + URL +IsTheSameTopicBTitle + I(UserReputation=='Low') + I(UserReputation=='Established') + I(UserReputation=='Trusted'), data=stackoverflow_dataset, family=binomial())
+#without comment sentiment scores
+stackoverflow_logit <- glm(formula=Successful ~ CodeSnippet + I(Weekday=='Weekend') + I(GMTHour=='Afternoon') + I(GMTHour=='Evening') 
+                           + I(GMTHour=='Night') + I(BodyLength=='Medium') + I(BodyLength =='Long') + I(TitleLength=='Medium') 
+                           + I(TitleLength=='Long')+ SentimentPositiveScore + SentimentNegativeScore 
+                           + NTag + AvgUpperCharsPPost + URL 
+                           + I(UserReputation=='Low') + I(UserReputation=='Established') + I(UserReputation=='Trusted'), 
+                           data=stackoverflow_dataset, family=binomial())
+
+
+#without comment sentiment scores, by reputation categories
+stackoverflow_logit <- glm(formula=Successful ~ CodeSnippet + I(Weekday=='Weekend') + I(GMTHour=='Afternoon') + I(GMTHour=='Evening') 
+                           + I(GMTHour=='Night') + I(BodyLength=='Medium') + I(BodyLength =='Long') + I(TitleLength=='Medium') 
+                           + I(TitleLength=='Long')+ SentimentPositiveScore + SentimentNegativeScore 
+                           + NTag + AvgUpperCharsPPost + URL, data=stackoverflow_dataset, family=binomial())
+
 
 cat("Regressione eseguita con successo..")
 capture.output(summary(stackoverflow_logit), file="/tmp/regressione10ott2016.txt")
