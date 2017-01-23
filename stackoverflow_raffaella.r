@@ -13,17 +13,17 @@ stackoverflow_dataset <- read.csv2('/tmp/ReputationStudyRefactored.csv')
 
 #stackoverflow_dataset$BodyLength <- discretize(stackoverflow_dataset$BodyLength, categories = 3, labels = c(‘short','medium','long’), method="cluster", ordered=FALSE, onlycuts=FALSE)
 
-stackoverflow_dataset$NTag<-sapply(as.character(stackoverflow_dataset$NTag),switch,'Single'=as.logical(FALSE),'Multiple'=as.logical(TRUE))
+#stackoverflow_dataset$NTag<-sapply(as.character(stackoverflow_dataset$NTag),switch,'Single'=as.logical(FALSE),'Multiple'=as.logical(TRUE))
 
 #stackoverflow_dataset$TitleLength<-discretize(stackoverflow_dataset$TitleLength, method="cluster", categories=3, labels= NULL, ordered=FALSE, onlycuts=FALSE)
 
 #stackoverflow_dataset$BodyLength <- discretize(stackoverflow_dataset$BodyLength, categories = 3, labels = NULL, method="cluster", ordered=FALSE, onlycuts=FALSE)
 
 
-stackoverflow_dataset$CodeSnippet <- sapply(as.character(stackoverflow_dataset$CodeSnippet),switch,'yes'=as.logical(TRUE),'no'=as.logical(FALSE))
-stackoverflow_dataset$Successful <- sapply(as.character(stackoverflow_dataset$Successful),switch,'yes'=as.logical(TRUE),'no'=as.logical(FALSE))
-stackoverflow_dataset$IsTheSameTopicBTitle <- sapply(as.character(stackoverflow_dataset$IsTheSameTopicBTitle),switch,'yes'=as.logical(TRUE),'no'=as.logical(FALSE))
-stackoverflow_dataset$URL <- sapply(as.character(stackoverflow_dataset$URL), switch, 'Yes' = as.logical(TRUE), 'No' = as.logical(FALSE))
+#stackoverflow_dataset$CodeSnippet <- sapply(as.character(stackoverflow_dataset$CodeSnippet),switch,'yes'=as.logical(TRUE),'no'=as.logical(FALSE))
+#stackoverflow_dataset$Successful <- sapply(as.character(stackoverflow_dataset$Successful),switch,'yes'=as.logical(TRUE),'no'=as.logical(FALSE))
+#stackoverflow_dataset$IsTheSameTopicBTitle <- sapply(as.character(stackoverflow_dataset$IsTheSameTopicBTitle),switch,'yes'=as.logical(TRUE),'no'=as.logical(FALSE))
+#stackoverflow_dataset$URL <- sapply(as.character(stackoverflow_dataset$URL), switch, 'Yes' = as.logical(TRUE), 'No' = as.logical(FALSE))
 #stackoverflow_dataset$Gratitude <- sapply(as.character(stackoverflow_dataset$Gratitude),switch,'yes'=as.logical(TRUE),'no'=as.logical(FALSE))
 
 
